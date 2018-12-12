@@ -1,0 +1,21 @@
+database:
+  url: jdbc:postgresql:/localhost:5432/instance
+  username: foo
+  password: bar
+secret: foo
+spring:
+  application:
+    name: jhipsterSampleApplication
+  kafka:
+    consumer:
+      topic: bid-meta
+      group-id: data-source-group-1
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: com.cinarra.metapersister.config.subscriber.DeserializerConfiguration
+      enable-auto-commit: true
+      auto-offset-reset: earliest
+      max-poll-records: 10
+      enable-batch-listen: true
+    common:
+      bootstrap:
+        servers: dmp-bid-data-kafka.cinarra.com:9092
